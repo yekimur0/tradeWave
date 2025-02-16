@@ -1,0 +1,18 @@
+// если вы хотите использовать sass-переменные - удалите root
+// colors
+:root {
+  // base
+  --font-family: "Inter", sans-serif;
+  --second-family: "Bitter", sans-serif;
+  --content-width: 1460px;
+  --container-offset: 10px;
+  --container-width: calc(var(--content-width) + (var(--container-offset) * 2));
+
+  // colors
+  --white: #fff;
+  --black: #000;
+  --dark: #272727;
+  --accent: #3663ef;
+  --transition: 0.2s ease-in;
+  --fontSize-16: clamp(14px, 1vw, 16px);
+}

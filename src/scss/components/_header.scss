@@ -1,0 +1,166 @@
+.header {
+  padding: 4px 0;
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    gap: clamp(20px, 2.5vw, 40px);
+    @media (max-width: 1200px) {
+      justify-content: space-between;
+    }
+  }
+
+  .nav {
+    &__list {
+      display: flex;
+      gap: 24px;
+    }
+    &__link {
+      font-family: var(--font-family);
+      font-weight: 600;
+      font-size: var(--fontSize-16);
+      line-height: 120%;
+      text-transform: uppercase;
+      text-align: center;
+      color: var(--dark);
+      position: relative;
+      &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -1px;
+        width: 0%;
+        height: 1px;
+        background: var(--dark);
+        transition: width var(--transition);
+      }
+      @include hover {
+        &:hover {
+          &::before {
+            width: 100%;
+          }
+        }
+      }
+    }
+    .mobile-contacts {
+      display: none;
+      @media (max-width: 1200px) {
+        display: flex;
+      }
+    }
+    @media (max-width: 1200px) {
+      position: absolute;
+      top: 90px;
+      left: -100%;
+      width: 100%;
+      height: 360px;
+      background-color: #ffffff;
+      z-index: 9999;
+      padding: 30px 10px 30px 10px;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      &.active {
+        opacity: 1;
+        visibility: visible;
+        left: 0;
+      }
+      &__list {
+        width: 100%;
+        flex-direction: column;
+        padding-bottom: 20px;
+      }
+      .mobile-contacts {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+
+        .mail {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          font-family: var(--font-family);
+          font-weight: 500;
+          font-size: 16px;
+          color: #272727;
+        }
+        .address {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          strong {
+            font-family: var(--font-family);
+            font-weight: 700;
+            font-size: 20px;
+            text-transform: uppercase;
+            color: #272727;
+          }
+          span {
+            font-family: var(--font-family);
+            font-weight: 500;
+            font-size: 14px;
+            color: #272727;
+          }
+        }
+      }
+    }
+  }
+
+  &__btn {
+    margin-left: auto;
+    @media (max-width: 1200px) {
+      display: none;
+    }
+  }
+}
+
+.burger__wrapper {
+  width: 60px;
+  height: 40px;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  padding: 0px 10px;
+  display: none;
+  cursor: pointer;
+  @media (max-width: 1200px) {
+    display: flex;
+  }
+  > * {
+    pointer-events: none;
+  }
+
+  .burger {
+    background: url("../../img/burger-line.svg") center / cover no-repeat;
+    width: 40px;
+    height: 14px;
+  }
+}
+
+.burger__wrapper.active {
+  .burger {
+    background: url("../../img/burger-close.svg") center / cover no-repeat;
+    height: 26px;
+  }
+}
+
+.fixed--header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99999;
+  animation: slideInFromTop 0.3s ease forwards;
+  background-color: #fff;
+}
+
+@keyframes slideInFromTop {
+  from {
+    top: -100px;
+  }
+  to {
+    top: 0;
+  }
+}
